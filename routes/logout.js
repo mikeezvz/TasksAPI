@@ -6,10 +6,12 @@ router.use(express.json());
 
 router.use(bodyParser.json()); 
 
-router.get('/', (request, response) => {
-    if (request.session.authenticated) {
-        return response.status(200).send('User ist noch eingeloggt');
+router.delete('/', (request, response) => {
+    if(request.session.authenticated){
+    request.session.authenticated = false
+    return response.status(200).send('Erfolgreich ausgeloggt');
     }
     return response.status(401).send('User ist nicht eingeloggt');
 });
-    module.exports = router
+
+module.exports = router

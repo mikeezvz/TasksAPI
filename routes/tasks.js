@@ -1,8 +1,8 @@
 const express = require('express');
-const app = express();
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const router = express.router();
+const router = express.Router();
+router.use(express.json());
 
 //Testdaten mit ChatGPT generiert
 const tasks = [
@@ -79,59 +79,48 @@ const tasks = [
   ]
   
 
-app.get('/', (request, response) => {
+router.get('/', (request, response) => {
   const task = tasks.map(task =>({id:tasks.id, Titel:tasks.Titel, Beschreibung:tasks.Beschreibung, DueDate:tasks.DueDate, ResolvedDate:tasks.ResolvedDate}))
   response.json(tasks)
 });
 
-app.post('/', (request, response) => {
+router.post('/', (request, response) => {
   let addTask = {
       task: request.body
   }
   tasks.push(addTask);
   response.send(addTask);
+  response.status(201).send('Task erfolgreich hinzugefügt');
 
   console.log(tasks);
+
 })
 
-app.get('/:id', (request, response) => {
-
+router.get('/:id', (request, response) => {
   const byId = request.params.id;
   const taskIndex = tasks.find(task => task.Id == byId);
 
-  if(bookId) {
+  if (taskIndex) {
       response.json(taskIndex);
   } else {
-      response.status(404).json({ message: "Task nicht gefunden"})
+      response.status(404).send('Task nicht gefunden');
   }
-})
+});
 
-app.patch('/:id', (request, response) => {
+router.patch('/:id', (request, response) => {
   const byId = request.params.id;
   const taskIndex= tasks.find(task => task.Id == byId);
 
-  if(request.body.Id) {
-      tasks[taskIndex].Id = request.body.Id;
-  }
   if(request.body.Titel) {
       tasks[taskIndex].Titel = request.body.Titel;
-  }
-  if(request.body.Beschreibung) {
-    tasks[taskIndex].Beschreibung = request.body.Beschreibung;
-  }
-  if(request.body.DueDate) {
-    tasks[taskIndex].DueDate = request.body.DueDate;
-  }
-  if(request.body.ResolvedDate) {
-    tasks[taskIndex].ResolvedDate = request.body.ResolvedDate;
   }
 
   response.json(bookArray[taskIndex]);
 
   console.log(bookArray);
-})
+});
 
-app.delete('/:id', (request, response) => {
+router.delete('/:id', (request, response) => {
   const byId = request.params.id;
   const bookIndex = tasks.findIndex(task => task.id == byId);
   
@@ -140,3 +129,5 @@ app.delete('/:id', (request, response) => {
 
   console.log(bookArray);
 })
+
+module.exports = router

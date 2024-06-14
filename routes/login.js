@@ -1,19 +1,9 @@
 const express = require('express');
-const app = express();
-const session = require('express-session');
-const bodyParser = require('body-parser');
-const router = express.router();
+const router = express.Router();
 
+router.use(express.json());
 
-app.use(bodyParser.json()); 
-
-app.use(session({
-    secret: 'your_secret_key',
-    resave: false,
-    saveUninitialized: true
-  }));
-  
-  app.post('/', (request, response) => {
+router.post('/', (request, response) => {
     const user = {
         email: "mike.zogheib@lernende.bbw.ch",
         password: "1212"
@@ -28,8 +18,10 @@ app.use(session({
     if (email === user.email, password === user.password) {
         request.session.authenticated = true;
         request.session.user = { email };
-        return response.status(200).send('Sie sind eingeloogt');
+        return response.status(200).send('Sie sind eingeloggt');
     }
 
     return response.status(401).send('Ungültige E-Mail oder Passwort');
 });
+
+module.exports = router;
