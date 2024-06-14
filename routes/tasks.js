@@ -88,9 +88,14 @@ router.post('/', (request, response) => {
   let addTask = {
       task: request.body
   }
+  if(request.body.Titel){
   tasks.push(addTask);
   response.send(addTask);
   response.status(201).send('Task erfolgreich hinzugefügt');
+  }
+  else{
+    response.status(400).send('Sie müssen einen Titel mitgeben')
+  }
 
   console.log(tasks);
 

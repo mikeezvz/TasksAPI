@@ -1,0 +1,62 @@
+commit d32049e27ba53cb1ccd314d68e254eb5a4f3f625
+Author: mikeezvz <mike.zogheib@lernende.bbw.ch>
+Date:   Fri Jun 14 15:54:05 2024 +0200
+
+    Authentication
+    
+    - Hinzugefügt oder vervollständigt:
+     - login.js
+     - verify.js
+     - logout.js
+    
+    - Zusätzlich node aktualisiert von Version 12 auf neuere Version.
+    - README-File angefangen zu bearbeiten
+    
+    - Added or completed:
+     - login.js
+     - verify.js
+     - logout.js
+    
+    - Additionally updated node from version 12 to newer version.
+    - README file started to be edited
+
+commit 3046e7d9a48c5cc2d72662e1c7bdd8f439ec62cf
+Author: mikeezvz <mike.zogheib@lernende.bbw.ch>
+Date:   Fri Jun 14 11:05:04 2024 +0200
+
+    Tasks
+    
+    Hinzugefügt:
+    - tasks.js
+    Alle Endpunkte erstellt
+    - login.js
+    Login mit Credentials hinzugefügt
+    - verify.js
+    Noch unvollständig
+    
+    Swagger wurde in index.js schnell auskommentiert
+    
+    Added:
+    - tasks.js
+    All endpoints created
+    - login.js
+    Login with credentials added
+    - verify.js
+    Still incomplete
+    
+    Swagger was temporarily commented out in index.js
+
+commit 78f10aa8ee87ced58b254518404a544edcf4cd85
+Author: mikeezvz <mike.zogheib@lernende.bbw.ch>
+Date:   Fri Jun 14 09:05:21 2024 +0200
+
+    Initial
+    
+    - Ordner für Routes hinzugefügt
+    - Index.js hinzugefügt
+
+commit 51fec39ae98fdd7f714a1ab22f169e40c85b68ea
+Author: mikeezvz <129942705+mikeezvz@users.noreply.github.com>
+Date:   Fri Jun 14 08:53:23 2024 +0200
+
+    Initial commit
